@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Chessington.GameEngine.Pieces
@@ -14,7 +15,7 @@ namespace Chessington.GameEngine.Pieces
             var row = board.FindPiece(this).Row;
             var col = board.FindPiece(this).Col;
 
-            for (var i = 0; i < 8; i++)
+            for (var i = 0; i <= 7; i++)
             {
                 if (i != col)
                 {
