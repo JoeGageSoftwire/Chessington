@@ -13,8 +13,6 @@ namespace Chessington.GameEngine.Pieces
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
             var moves = new List<Square>();
-            { };
-
             var row = board.FindPiece(this).Row;
             var col = board.FindPiece(this).Col;
             
@@ -42,7 +40,7 @@ namespace Chessington.GameEngine.Pieces
                 }
                 else
                 {
-                    if (row != 8)
+                    if (row != 7)
                     {
                         moves.Add(Square.At(row + 1, col));
                     }
