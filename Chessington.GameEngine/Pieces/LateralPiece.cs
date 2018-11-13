@@ -10,19 +10,6 @@ namespace Chessington.GameEngine.Pieces
         {
             var moves = new List<Square>();
 
-            /*for (var i = 0; i <= 7; i++)
-            {
-                if (i != col)
-                {
-                    moves.Add(Square.At(row, i));
-                }
-
-                if (i != row)
-                {
-                    moves.Add(Square.At(i, col));
-                }
-            }*/
-
             for (var i = 1; ; i++)
             {
                 if (!Square.IsOnBoard(row, col + i) || board.GetPiece(Square.At(row, col + i)) != null)

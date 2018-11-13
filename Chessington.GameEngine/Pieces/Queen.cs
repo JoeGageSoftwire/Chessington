@@ -15,7 +15,7 @@ namespace Chessington.GameEngine.Pieces
             var col = board.FindPiece(this).Col;
 
             var movesLateral = LateralPiece.GetLateralMoves(board, row, col);
-            var movesDiagonal = DiagonalPiece.GetDiagonalMoves(row, col);
+            var movesDiagonal = DiagonalPiece.GetDiagonalMoves(board, row, col);
 
             var moves = movesLateral.Concat(movesDiagonal);
 

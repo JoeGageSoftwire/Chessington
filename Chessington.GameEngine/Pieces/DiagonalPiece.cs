@@ -6,18 +6,58 @@ namespace Chessington.GameEngine.Pieces
 {
     internal class DiagonalPiece
     {
-        public static IEnumerable<Square> GetDiagonalMoves(int row, int col)
+        public static IEnumerable<Square> GetDiagonalMoves(Board board, int row, int col)
         {
             var moves = new List<Square>();
 
-            for (int i = 0; i <= 7; i++)
+            for (var i = 1; ; i++)
             {
-                var diff = Math.Abs(row - i);
-                if (diff == 0) continue;
-
-                moves = Piece.AddSquare(moves, Square.At(i, col + diff));
-                moves = Piece.AddSquare(moves, Square.At(i, col - diff));
+                if (!Square.IsOnBoard(row + i, col + i) || board.GetPiece(Square.At(row + i, col + i)) != null)
+                {
+                    break;
+                }
+                else
+                {
+                    moves.Add(Square.At(row + i, col + i));
+                }
             }
+
+            for (var i = 1; ; i++)
+            {
+                if (!Square.IsOnBoard(row + i, col - i) || board.GetPiece(Square.At(row + i, col - i)) != null)
+                {
+                    break;
+                }
+                else
+                {
+                    moves.Add(Square.At(row + i, col - i));
+                }
+            }
+
+            for (var i = 1; ; i++)
+            {
+                if (!Square.IsOnBoard(row - i, col + i) || board.GetPiece(Square.At(row - i, col + i)) != null)
+                {
+                    break;
+                }
+                else
+                {
+                    moves.Add(Square.At(row - i, col + i));
+                }
+            }
+
+            for (var i = 1; ; i++)
+            {
+                if (!Square.IsOnBoard(row - i, col - i) || board.GetPiece(Square.At(row - i, col - i)) != null)
+                {
+                    break;
+                }
+                else
+                {
+                    moves.Add(Square.At(row - i, col - i));
+                }
+            }
+
             return moves;
         }
     }
