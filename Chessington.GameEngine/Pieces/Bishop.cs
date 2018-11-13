@@ -14,7 +14,7 @@ namespace Chessington.GameEngine.Pieces
             
             var row = board.FindPiece(this).Row;
             var col = board.FindPiece(this).Col;
-            var moves = DiagonalPiece.GetDiagonalMoves(board, row, col);
+            var moves = DiagonalPiece.GetDiagonalMoves(board, Player, row, col);
 
             return moves;
         }

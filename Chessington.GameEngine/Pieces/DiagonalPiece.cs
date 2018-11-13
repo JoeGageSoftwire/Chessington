@@ -6,7 +6,7 @@ namespace Chessington.GameEngine.Pieces
 {
     internal class DiagonalPiece
     {
-        public static IEnumerable<Square> GetDiagonalMoves(Board board, int row, int col)
+        public static IEnumerable<Square> GetDiagonalMoves(Board board, Player player, int row, int col)
         {
             var moves = new List<Square>();
 
@@ -14,6 +14,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!Square.IsOnBoard(row + i, col + i) || board.GetPiece(Square.At(row + i, col + i)) != null)
                 {
+                    if (Square.IsOnBoard(row + i, col + i) && board.GetPiece(Square.At(row + i, col + i)).Player != player) moves.Add(Square.At(row + i, col + i));
                     break;
                 }
                 else
@@ -26,6 +27,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!Square.IsOnBoard(row + i, col - i) || board.GetPiece(Square.At(row + i, col - i)) != null)
                 {
+                    if (Square.IsOnBoard(row + i, col - i) && board.GetPiece(Square.At(row + i, col - i)).Player != player) moves.Add(Square.At(row + i, col - i));
                     break;
                 }
                 else
@@ -38,6 +40,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!Square.IsOnBoard(row - i, col + i) || board.GetPiece(Square.At(row - i, col + i)) != null)
                 {
+                    if (Square.IsOnBoard(row - i, col + i) && board.GetPiece(Square.At(row - i, col + i)).Player != player) moves.Add(Square.At(row - i, col + i));
                     break;
                 }
                 else
@@ -50,6 +53,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!Square.IsOnBoard(row - i, col - i) || board.GetPiece(Square.At(row - i, col - i)) != null)
                 {
+                    if (Square.IsOnBoard(row - i, col - i) && board.GetPiece(Square.At(row - i, col - i)).Player != player) moves.Add(Square.At(row - i, col - i));
                     break;
                 }
                 else
