@@ -12,53 +12,61 @@ namespace Chessington.GameEngine.Pieces
 
             for (var i = 1; ; i++)
             {
-                if (!Square.IsOnBoard(row + i, col + i) || board.GetPiece(Square.At(row + i, col + i)) != null)
+                var trySquare = Square.At(row + i, col + i);
+
+                if (!Square.IsOnBoard(trySquare) || board.GetPiece(trySquare) != null)
                 {
-                    moves = Piece.AddSquare(moves, board, player, Square.At(row + i, col + i));
+                    moves = Piece.AddSquare(moves, board, player, trySquare);
                     break;
                 }
                 else
                 {
-                    moves.Add(Square.At(row + i, col + i));
+                    moves.Add(trySquare);
                 }
             }
 
             for (var i = 1; ; i++)
             {
-                if (!Square.IsOnBoard(row + i, col - i) || board.GetPiece(Square.At(row + i, col - i)) != null)
+                var trySquare = Square.At(row + i, col - i);
+
+                if (!Square.IsOnBoard(trySquare) || board.GetPiece(trySquare) != null)
                 {
-                    moves = Piece.AddSquare(moves, board, player, Square.At(row + i, col - i));
+                    moves = Piece.AddSquare(moves, board, player, trySquare);
                     break;
                 }
                 else
                 {
-                    moves.Add(Square.At(row + i, col - i));
+                    moves.Add(trySquare);
                 }
             }
 
             for (var i = 1; ; i++)
             {
-                if (!Square.IsOnBoard(row - i, col + i) || board.GetPiece(Square.At(row - i, col + i)) != null)
+                var trySquare = Square.At(row - i, col + i);
+
+                if (!Square.IsOnBoard(trySquare) || board.GetPiece(trySquare) != null)
                 {
-                    moves = Piece.AddSquare(moves, board, player, Square.At(row - i, col + i));
+                    moves = Piece.AddSquare(moves, board, player, trySquare);
                     break;
                 }
                 else
                 {
-                    moves.Add(Square.At(row - i, col + i));
+                    moves.Add(trySquare);
                 }
             }
 
             for (var i = 1; ; i++)
             {
-                if (!Square.IsOnBoard(row - i, col - i) || board.GetPiece(Square.At(row - i, col - i)) != null)
+                var trySquare = Square.At(row - i, col - i);
+
+                if (!Square.IsOnBoard(trySquare) || board.GetPiece(trySquare) != null)
                 {
-                    moves = Piece.AddSquare(moves, board, player, Square.At(row - i, col - i));
+                    moves = Piece.AddSquare(moves, board, player, trySquare);
                     break;
                 }
                 else
                 {
-                    moves.Add(Square.At(row - i, col - i));
+                    moves.Add(trySquare);
                 }
             }
 
