@@ -15,17 +15,9 @@ namespace Chessington.GameEngine.Pieces
                 var diff = Math.Abs(row - i);
                 if (diff == 0) continue;
 
-                if (col + diff <= 7)
-                {
-                    moves.Add(Square.At(i, col + diff));
-                }
-
-                if (col - diff >= 0)
-                {
-                    moves.Add(Square.At(i, col - diff));
-                }
+                moves = Piece.AddSquare(moves, Square.At(i, col + diff));
+                moves = Piece.AddSquare(moves, Square.At(i, col - diff));
             }
-
             return moves;
         }
     }

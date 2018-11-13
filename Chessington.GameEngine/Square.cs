@@ -50,8 +50,9 @@
             return string.Format("Row {0}, Col {1}", Row, Col);
         }
 
-        public static bool IsOnBoard(Square square)
+        public static bool IsOnBoard(int row, int col)
         {
+            var square = Square.At(row, col);
             return square.Row >= 0 && square.Row <= 7 && square.Col >= 0 && square.Col <= 7;
         }
     }

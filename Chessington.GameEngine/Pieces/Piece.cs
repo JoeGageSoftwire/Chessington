@@ -23,5 +23,12 @@ namespace Chessington.GameEngine.Pieces
             var currentSquare = board.FindPiece(this);
             board.MovePiece(currentSquare, newSquare);
         }
+
+        public static List<Square> AddSquare(List<Square> moves, Square square)
+        {
+            if (!Square.IsOnBoard(square.Row, square.Col)) return moves;
+            moves.Add(square);
+            return moves;
+        }
     }
 }

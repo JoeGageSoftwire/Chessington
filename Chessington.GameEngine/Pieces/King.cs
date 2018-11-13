@@ -14,14 +14,14 @@ namespace Chessington.GameEngine.Pieces
             var row = board.FindPiece(this).Row;
             var col = board.FindPiece(this).Col;
 
-            if (Square.IsOnBoard(Square.At(row, col + 1))) moves.Add(Square.At(row, col + 1));
-            if (Square.IsOnBoard(Square.At(row + 1, col + 1))) moves.Add(Square.At(row + 1, col + 1));
-            if (Square.IsOnBoard(Square.At(row + 1, col))) moves.Add(Square.At(row + 1, col));
-            if (Square.IsOnBoard(Square.At(row + 1, col - 1))) moves.Add(Square.At(row + 1, col - 1));
-            if (Square.IsOnBoard(Square.At(row, col - 1))) moves.Add(Square.At(row, col - 1));
-            if (Square.IsOnBoard(Square.At(row - 1, col - 1))) moves.Add(Square.At(row - 1, col - 1));
-            if (Square.IsOnBoard(Square.At(row - 1, col))) moves.Add(Square.At(row - 1, col));
-            if (Square.IsOnBoard(Square.At(row - 1, col + 1))) moves.Add(Square.At(row - 1, col + 1));
+            moves = AddSquare(moves, Square.At(row, col + 1));
+            moves = AddSquare(moves, Square.At(row + 1, col + 1));
+            moves = AddSquare(moves, Square.At(row + 1, col));
+            moves = AddSquare(moves, Square.At(row + 1, col - 1));
+            moves = AddSquare(moves, Square.At(row, col - 1));
+            moves = AddSquare(moves, Square.At(row - 1, col - 1));
+            moves = AddSquare(moves, Square.At(row - 1, col));
+            moves = AddSquare(moves, Square.At(row - 1, col + 1));
 
             return moves;
         }
