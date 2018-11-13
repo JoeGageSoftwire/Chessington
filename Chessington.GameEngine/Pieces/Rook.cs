@@ -13,7 +13,7 @@ namespace Chessington.GameEngine.Pieces
         {
             var row = board.FindPiece(this).Row;
             var col = board.FindPiece(this).Col;
-            var moves = LateralPiece.GetLateralMoves(row, col);
+            var moves = LateralPiece.GetLateralMoves(board, row, col);
 
             return moves;
         }
