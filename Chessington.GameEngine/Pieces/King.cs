@@ -14,14 +14,14 @@ namespace Chessington.GameEngine.Pieces
             var row = board.FindPiece(this).Row;
             var col = board.FindPiece(this).Col;
 
-            moves = AddSquare(moves, Square.At(row, col + 1));
-            moves = AddSquare(moves, Square.At(row + 1, col + 1));
-            moves = AddSquare(moves, Square.At(row + 1, col));
-            moves = AddSquare(moves, Square.At(row + 1, col - 1));
-            moves = AddSquare(moves, Square.At(row, col - 1));
-            moves = AddSquare(moves, Square.At(row - 1, col - 1));
-            moves = AddSquare(moves, Square.At(row - 1, col));
-            moves = AddSquare(moves, Square.At(row - 1, col + 1));
+            moves = AddSquare(moves, board, Player, Square.At(row, col + 1));
+            moves = AddSquare(moves, board, Player, Square.At(row + 1, col + 1));
+            moves = AddSquare(moves, board, Player, Square.At(row + 1, col));
+            moves = AddSquare(moves, board, Player, Square.At(row + 1, col - 1));
+            moves = AddSquare(moves, board, Player, Square.At(row, col - 1));
+            moves = AddSquare(moves, board, Player, Square.At(row - 1, col - 1));
+            moves = AddSquare(moves, board, Player, Square.At(row - 1, col));
+            moves = AddSquare(moves, board, Player, Square.At(row - 1, col + 1));
 
             return moves;
         }

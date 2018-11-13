@@ -24,9 +24,10 @@ namespace Chessington.GameEngine.Pieces
             board.MovePiece(currentSquare, newSquare);
         }
 
-        public static List<Square> AddSquare(List<Square> moves, Square square)
+        public static List<Square> AddSquare(List<Square> moves, Board board, Player player, Square square)
         {
             if (!Square.IsOnBoard(square.Row, square.Col)) return moves;
+            if (Square.IsFriendlyPiece(board, player, square)) return moves;
             moves.Add(square);
             return moves;
         }

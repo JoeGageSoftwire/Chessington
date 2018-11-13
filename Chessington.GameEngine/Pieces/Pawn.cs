@@ -23,8 +23,8 @@ namespace Chessington.GameEngine.Pieces
             var blockedInFront = Square.IsOnBoard(squareInFront.Row, squareInFront.Col) && board.GetPiece(squareInFront) != null;
             var blockedTwoInFront = Square.IsOnBoard(squareTwoInFront.Row, squareTwoInFront.Col) && board.GetPiece(squareTwoInFront) != null;
 
-            if (!HasMoved && !blockedInFront && !blockedTwoInFront) moves = AddSquare(moves, squareTwoInFront);
-            if(!blockedInFront) moves = AddSquare(moves, squareInFront);
+            if (!HasMoved && !blockedInFront && !blockedTwoInFront) moves = AddSquare(moves, board, Player, squareTwoInFront);
+            if(!blockedInFront) moves = AddSquare(moves, board, Player, squareInFront);
 
             return moves;
         }

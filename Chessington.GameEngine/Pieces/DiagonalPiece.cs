@@ -14,7 +14,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!Square.IsOnBoard(row + i, col + i) || board.GetPiece(Square.At(row + i, col + i)) != null)
                 {
-                    if (Square.IsOnBoard(row + i, col + i) && board.GetPiece(Square.At(row + i, col + i)).Player != player) moves.Add(Square.At(row + i, col + i));
+                    moves = Piece.AddSquare(moves, board, player, Square.At(row + i, col + i));
                     break;
                 }
                 else
@@ -27,7 +27,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!Square.IsOnBoard(row + i, col - i) || board.GetPiece(Square.At(row + i, col - i)) != null)
                 {
-                    if (Square.IsOnBoard(row + i, col - i) && board.GetPiece(Square.At(row + i, col - i)).Player != player) moves.Add(Square.At(row + i, col - i));
+                    moves = Piece.AddSquare(moves, board, player, Square.At(row + i, col - i));
                     break;
                 }
                 else
@@ -40,7 +40,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!Square.IsOnBoard(row - i, col + i) || board.GetPiece(Square.At(row - i, col + i)) != null)
                 {
-                    if (Square.IsOnBoard(row - i, col + i) && board.GetPiece(Square.At(row - i, col + i)).Player != player) moves.Add(Square.At(row - i, col + i));
+                    moves = Piece.AddSquare(moves, board, player, Square.At(row - i, col + i));
                     break;
                 }
                 else
@@ -53,7 +53,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 if (!Square.IsOnBoard(row - i, col - i) || board.GetPiece(Square.At(row - i, col - i)) != null)
                 {
-                    if (Square.IsOnBoard(row - i, col - i) && board.GetPiece(Square.At(row - i, col - i)).Player != player) moves.Add(Square.At(row - i, col - i));
+                    moves = Piece.AddSquare(moves, board, player, Square.At(row - i, col - i));
                     break;
                 }
                 else
