@@ -201,5 +201,85 @@ namespace Chessington.GameEngine.Tests.Pieces
             moves.Should().NotContain(Square.At(6, 2));
             moves.Should().NotContain(Square.At(6, 4));
         }
+
+        [Test]
+        public void WhitePawns_CanMoveDiagonallyLeft_ToTakeEnPassant()
+        {
+            var board = new Board(Player.Black);
+            var pawn = new Pawn(Player.White);
+            var target = new Pawn(Player.Black);
+            board.AddPiece(Square.At(3, 1), pawn);
+            board.AddPiece(Square.At(1, 0), target);
+
+            target.MoveTo(board, Square.At(3, 0));
+
+            var moves = pawn.GetAvailableMoves(board).ToList();
+
+            moves.Should().Contain(Square.At(2, 0));
+
+            pawn.MoveTo(board, Square.At(2, 0));
+
+            board.GetPiece(Square.At(3,0)).Should().BeNull();
+        }
+
+        [Test]
+        public void WhitePawns_CanMoveDiagonallyRight_ToTakeEnPassant()
+        {
+            var board = new Board(Player.Black);
+            var pawn = new Pawn(Player.White);
+            var target = new Pawn(Player.Black);
+            board.AddPiece(Square.At(3, 6), pawn);
+            board.AddPiece(Square.At(1, 7), target);
+
+            target.MoveTo(board, Square.At(3, 7));
+
+            var moves = pawn.GetAvailableMoves(board).ToList();
+
+            moves.Should().Contain(Square.At(2, 7));
+
+            pawn.MoveTo(board, Square.At(2, 7));
+
+            board.GetPiece(Square.At(3, 7)).Should().BeNull();
+        }
+
+        [Test]
+        public void BlackPawns_CanMoveDiagonallyLeft_ToTakeEnPassant()
+        {
+            var board = new Board(Player.White);
+            var pawn = new Pawn(Player.Black);
+            var target = new Pawn(Player.White);
+            board.AddPiece(Square.At(4, 6), pawn);
+            board.AddPiece(Square.At(6, 7), target);
+
+            target.MoveTo(board, Square.At(4, 7));
+
+            var moves = pawn.GetAvailableMoves(board).ToList();
+
+            moves.Should().Contain(Square.At(5, 7));
+
+            pawn.MoveTo(board, Square.At(5, 7));
+
+            board.GetPiece(Square.At(4, 7)).Should().BeNull();
+        }
+
+        [Test]
+        public void BlackPawns_CanMoveDiagonallyRight_ToTakeEnPassant()
+        {
+            var board = new Board(Player.White);
+            var pawn = new Pawn(Player.Black);
+            var target = new Pawn(Player.White);
+            board.AddPiece(Square.At(4, 1), pawn);
+            board.AddPiece(Square.At(6, 0), target);
+
+            target.MoveTo(board, Square.At(4, 0));
+
+            var moves = pawn.GetAvailableMoves(board).ToList();
+
+            moves.Should().Contain(Square.At(5, 0));
+
+            pawn.MoveTo(board, Square.At(5, 0));
+
+            board.GetPiece(Square.At(4, 0)).Should().BeNull();
+        }
     }
 }

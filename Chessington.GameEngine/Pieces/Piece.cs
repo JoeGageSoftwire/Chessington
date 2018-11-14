@@ -6,6 +6,8 @@ namespace Chessington.GameEngine.Pieces
 {
     public abstract class Piece
     {
+        public bool VulnerableToEnPassant;
+
         protected Piece(Player player)
         {
             Player = player;
@@ -13,23 +15,25 @@ namespace Chessington.GameEngine.Pieces
 
         public Player Player { get; private set; }
 
-        public bool HasMoved;
-
         public abstract IEnumerable<Square> GetAvailableMoves(Board board);
 
-        public void MoveTo(Board board, Square newSquare)
+        public virtual void MoveTo(Board board, Square newSquare)
         {
-            HasMoved = true;
             var currentSquare = board.FindPiece(this);
             board.MovePiece(currentSquare, newSquare);
+
+            VulnerableToEnPassant = false;
         }
 
-        public static List<Square> AddSquare(List<Square> moves, Board board, Player player, Square square)
+        public static List<Square> AddSquareIfValid(List<Square> moves, Board board, Player player, Square square)
         {
-            if (!Square.IsOnBoard(square)) return moves;
-            if (Square.IsFriendlyPiece(board, player, square)) return moves;
-            moves.Add(square);
+            if (IsSquareValid(square, board, player)) moves.Add(square);
             return moves;
+        }
+
+        public static bool IsSquareValid(Square square, Board board, Player player)
+        {
+            return Square.IsOnBoard(square) && !Square.IsFriendlyPiece(board, player, square);
         }
     }
 }

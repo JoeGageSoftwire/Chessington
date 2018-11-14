@@ -61,6 +61,21 @@ namespace Chessington.GameEngine
             board[to.Row, to.Col] = board[from.Row, from.Col];
             board[from.Row, from.Col] = null;
 
+            var pieceInSquareBehind = movingPiece.Player == Player.White ? board[to.Row + 1, to.Col] : board[to.Row - 1, to.Col];
+
+            if (pieceInSquareBehind != null && movingPiece is Pawn && pieceInSquareBehind.VulnerableToEnPassant)
+            {
+                OnPieceCaptured(pieceInSquareBehind);
+                if (movingPiece.Player == Player.White)
+                {
+                    board[to.Row + 1, to.Col] = null;
+                }
+                else
+                {
+                    board[to.Row - 1, to.Col] = null;
+                }
+            }
+
             CurrentPlayer = movingPiece.Player == Player.White ? Player.Black : Player.White;
             OnCurrentPlayerChanged(CurrentPlayer);
         }
